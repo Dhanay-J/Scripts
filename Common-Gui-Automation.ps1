@@ -149,7 +149,3 @@ else {
     # Display the form and capture selection (more code needed here)
     $form.ShowDialog()
 }
-
-
-
-addControls 23 6 $btn "iij" $dropBox
