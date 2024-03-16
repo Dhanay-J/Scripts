@@ -76,6 +76,35 @@ function createButton{
     return $btn
 }
 
+function addControls {
+  
+  if($args.Count -gt 0){
+      
+      
+      foreach($control in $args){
+        # Test object for testing compatibility
+        $comparator_obj = New-Object System.Windows.Forms.Button
+        $comparator_type = $comparator_obj.GetType() | Select-Object -ExpandProperty BaseType;
+        
+        $control_type = $control.GetType() | Select-Object -ExpandProperty BaseType;
+        
+        # Order of comparison is non commutative
+        $res = $comparator_type.BaseType -eq $control_type.BaseType
+        
+        if ($res) {
+            
+            $form.Controls.Add($control)
+        }
+
+      }
+
+  }
+  else{
+        Write-Host "No Controls Given"
+  }
+}
+
+
 # Create a form object
 $form = New-Object System.Windows.Forms.Form
 $form.Size = New-Object System.Drawing.Size(600,600) 
@@ -110,40 +139,17 @@ else {
     #Create Button 
     $btn = createButton 10 180 80 30 "Submit"
 
+
+
     # Add controls to Form
-    $form.Controls.Add($dropBox)    
-    $form.Controls.Add($textBox)
-    $form.Controls.Add($btn)
+    addControls $dropBox $textBox $btn
+
     
 
     # Display the form and capture selection (more code needed here)
-    #$form.ShowDialog()
+    $form.ShowDialog()
 }
 
-function addControls {
-  if($args.Count -gt 0){
-      
-      
-      foreach($control in $args){
-        $comparator_obj = New-Object System.Windows.Forms.Button
-        $comparator_type = $comparator_obj.GetType() | Select-Object -ExpandProperty BaseType;
-        
-        $control_type = $control.GetType() | Select-Object -ExpandProperty BaseType;
-        
-        # Order of comparison is non commutative
-        $res = $comparator_type.BaseType -eq $control_type.BaseType
-        
-        if ($res) {
-            
-            Write-Host "compatible" $control    
-        }
 
-      }
-
-  }
-  else{
-        Write-Host "No Controls Given"
-  }
-}
 
 addControls 23 6 $btn "iij" $dropBox
