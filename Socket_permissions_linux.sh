@@ -4,3 +4,6 @@ sudo chmod u+s  main
 
 # Or 
 sudo setcap CAP_NET_RAW+eip main
+
+# For python files
+sudo -E python myScriptName.py
