@@ -6,7 +6,7 @@
 5. Viirtio-win-guest-tools-setup
 6. Install Looking Glass B7
 7. winget install --id=VirtualDrivers.Virtual-Display-Driver -e
-8.
+8. ```xml
 	<domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">
 	<qemu:commandline>
 	  <qemu:arg value="-acpitable"/>
@@ -16,9 +16,8 @@
 	  <qemu:arg value="-object"/>
 	  <qemu:arg value="{'qom-type':'memory-backend-file','id':'looking-glass','mem-path':'/dev/kvmfr0','size':33554432,'share':true}"/>
     </qemu:commandline>
-    
-9.
-  Advanced Display->Display : Display 2 VDD by MTT
+ ```   
+9. Advanced Display->Display : Display 2 VDD by MTT
 	Presentation mode : Display 2 
 	Both spice and LG clients are blank.
 	Force Reset VM (this runs the LG server on startup)
