@@ -38,3 +38,17 @@ echo "options kvmfr static_size_mb=32" | sudo tee /etc/modprobe.d/kvmfr.conf
 echo "kvmfr" | sudo tee -a /etc/modules-load.d/kvmfr.conf
 echo 'SUBSYSTEM=="kvmfr", OWNER="root", GROUP="kvm", MODE="0660"' | sudo tee /etc/udev/rules.d/99-kvmfr.rules
 ```
+
+# ~/.looking-glass-client.ini
+```ini
+[app]
+shmFile=/dev/kvmfr0
+
+[win]
+fullScreen=yes
+keepAspect=no
+
+[egl]
+scale=2
+```
+
